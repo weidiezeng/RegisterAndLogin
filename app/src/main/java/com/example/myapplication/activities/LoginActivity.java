@@ -92,7 +92,9 @@ public class LoginActivity extends AccountBaseActivity implements View.OnClickLi
     ImageView mImLoginQq;
 
     public static final String HOLD_USERNAME_KEY = "holdUsernameKey";
+    public static final String HOLD_USERPWD_KEY="holdUserpwdKey";
     private String HOLD_ACCOUNT="hold_account";
+    public static final String HOLD_ACCOUNT_STATE="holdAccountState";
     private int mLogoHeight;
     private int mLogoWidth;
     @Override
@@ -437,19 +439,25 @@ public class LoginActivity extends AccountBaseActivity implements View.OnClickLi
         if((view=getCurrentFocus())!=null){
             hideKeyBoard(view.getWindowToken());
         }
+        Toast toast=Toast.makeText(getApplicationContext(),R.string.login_success_hint,Toast.LENGTH_SHORT);
+        toast.show();
+        setResult(RESULT_OK);
         sendLocalReceiver();
         holdAccount();
 
     }
 
-    //保存用户名到本地
+    //保存用户名和密码到本地
     private void holdAccount() {
         String username=mEtLoginUsername.getText().toString().trim();
+        String password=mEtLoginPwd.getText().toString().trim();
         if(!TextUtils.isEmpty(username)){
             SharedPreferences sharedPreferences=getSharedPreferences(HOLD_ACCOUNT,Context.MODE_PRIVATE);
             SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString(HOLD_USERNAME_KEY,username)
-                    .apply();
+                          .putString(HOLD_USERPWD_KEY,password)
+                            .putBoolean(HOLD_ACCOUNT_STATE,true)
+                            .apply();
         }
     }
 

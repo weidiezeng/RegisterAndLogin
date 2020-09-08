@@ -1,5 +1,7 @@
 package com.example.myapplication.bean;
 
+//请求结果bean
+
 public class LoginResult {
     public static final int RESULT_SUCCESS = 1;
     public static final int RESULT_UNKNOW = 0;

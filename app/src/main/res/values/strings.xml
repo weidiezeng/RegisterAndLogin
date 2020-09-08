@@ -4,6 +4,8 @@
 
     <!--登录专用-->
     <string name="login">登录</string>
+    <string name="login_out">退出登录</string>
+    <string name="login_head">点击头像登录</string>
     <string name="login_input_username_hint">手机号或邮箱</string>
     <string name="login_input_username_hint_error">请输入正确的手机号或邮箱&#8230;</string>
     <string name="login_hold_hint">记住密码</string>
